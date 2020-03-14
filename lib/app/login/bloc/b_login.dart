@@ -47,8 +47,7 @@ class BLogin extends BlocBase  with Validators,ProgressAction
   ///Metodo para iniciar sesion
   signIn(){
     inProgressAction(true);
-    print("user"+ _userCtrl.value.trim() + " password"+_passwordCtrl.value.trim());
-    HttpClient().signIn(_userCtrl.value, _passwordCtrl.value).then((response){
+    HttpClient().signIn(_userCtrl.value.trim(), _passwordCtrl.value.trim()).then((response){
       inProgressAction(false);
       if(response.statusCode==200){
         var profile= Person.profile(json.decode(response.body)["perfil"]);
